@@ -5,7 +5,7 @@
 body{
     margin:0;
     padding: 0;
-    background-image: url("/img/sea.jpg");
+    background-image: url("/image/sea.jpg");
     background-position: 50% 50%;
     
     height: 100vh;
@@ -66,13 +66,13 @@ body{
     cursor: pointer;
 }
 .record{
-    background-image: url("/icons/record.svg");
+    background-image: url("/ico/record.svg");
 
 }
 
 
 .stop{
-    background-image: url("/icons/stop.svg");
+    background-image: url("/ico/stop.svg");
 }
 
 .heading .c{
