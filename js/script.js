@@ -5,13 +5,38 @@ const {log, table} = console;
 
 const VideoScreen = document.querySelector("#VideoScreen");
 const startStopBtn = document.querySelector("#startStopBtn");
+const timer = document.querySelector("#timer");
+
 
 let All = {
     VideoScreen,
     stream:null,
     recorder:null,
-    isRecordingStarted:false
+    isRecordingStarted:false,
+    
 }
+
+
+
+    function calculateTimeDuration(secs) {
+        var hr = Math.floor(secs / 3600);
+        var min = Math.floor((secs - (hr * 3600)) / 60);
+        var sec = Math.floor(secs - (hr * 3600) - (min * 60));
+    
+        if (min < 10) {
+            min = "0" + min;
+        }
+    
+        if (sec < 10) {
+            sec = "0" + sec;
+        }
+    
+        if(hr <= 0) {
+            return min + ':' + sec;
+        }
+    
+        return hr + ':' + min + ':' + sec;
+    }
 
 const handlerForStartingRecording =async () =>{
     const screenConfig = {
@@ -25,13 +50,21 @@ const handlerForStartingRecording =async () =>{
     log('Recording is Stared!!');
     All.VideoScreen.srcObject = All.stream = await navigator.mediaDevices.getDisplayMedia(screenConfig);
     All.recorder = new RecordRTCPromisesHandler(All.stream, {
-        type: 'video',
-      
-       
+        type: 'video',  
     });
     All.recorder.startRecording();
     All.recorder.screen = All.stream;
 
+    dateStarted = new Date().getTime();
+    (function looper() {
+        if(!All.recorder) {
+            return;
+        }
+
+        timer.innerHTML = calculateTimeDuration((new Date().getTime() - dateStarted) / 1000);
+
+        setTimeout(looper, 1000);
+    })();
 
 
 }
@@ -49,6 +82,7 @@ const handlerForStopingRecording = async () =>{
     log("Step2")
     All.VideoScreen.srcObject = null;
     All.recorder.screen.stop();
+    All.recorder = null;
 
 
 }
