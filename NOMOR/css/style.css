@@ -5,7 +5,7 @@
 body{
     margin:0;
     padding: 0;
-    background-image: url(/sea.jpg);
+    background-image: url(/NOMOR/image/sea.jpg);
     background-position: 50% 50%;
     
     height: 100vh;
@@ -66,13 +66,24 @@ body{
     cursor: pointer;
 }
 .record{
-    background-image: url(/ico/record.svg);
+    background-image: url(/NOMOR/ico/record.svg);
+
+}
+
+.play{
+    background-image: url(/NOMOR/ico/play.svg);
+
+}
+
+.pause{
+    background-image: url(/NOMOR/ico/pause.svg);
 
 }
 
 
+
 .stop{
-    background-image: url(/ico/stop.svg);
+    background-image: url(/NOMOR/ico/stop.svg);
 }
 
 .heading .c{
