@@ -5,8 +5,9 @@ const {log, table} = console;
 
 const VideoScreen = document.querySelector("#VideoScreen");
 const startStopBtn = document.querySelector("#startStopBtn");
-const pausePlayBtn = document.querySelector("#pausePlayBtn");
+// const pausePlayBtn = document.querySelector("#pausePlayBtn");
 const timer = document.querySelector("#timer");
+const videoDownloadBtn = document.querySelector("#videoDownload");
 
 let All = {
     VideoScreen,
@@ -14,9 +15,20 @@ let All = {
     recorder: null,
     isRecordingStarted: false,
     blob: null,
-    isPlayed: false
+    isPlayed: false,
+    timer:timer
 
 }
+
+const runThisFirst = () =>{
+    if(All.blob==null&&All.recorder==null){
+        videoDownloadBtn.style.display = "none"
+    }else{
+        videoDownloadBtn.style.display = "block"
+    }
+}
+
+runThisFirst()
 
 function formatBytes(a, b = 2) {
     if (0 === a) 
@@ -59,6 +71,7 @@ function calculateTimeDuration(secs) {
 }
 
 const handlerForStartingRecording = async() => {
+    // runThisFirst();
     const screenConfig = {
         video: {
             cursor: "always"
@@ -75,12 +88,12 @@ const handlerForStartingRecording = async() => {
 
     dateStarted = new Date().getTime();
     (function looper() {
-        if (!All.recorder) {
+        if (!All.recorder&&!All.isPlayed) {
             return;
         }
 
-        timer.innerHTML = calculateTimeDuration((new Date().getTime() - dateStarted) / 1000);
-
+        document.title = timer.innerHTML = calculateTimeDuration((new Date().getTime() - dateStarted) / 1000);
+        
         setTimeout(looper, 1000);
     })();
 
@@ -98,29 +111,51 @@ const handlerForStopingRecording = async() => {
     All.VideoScreen.srcObject = null;
     All.recorder.screen.stop();
     All.recorder = null;
+    
+    All.VideoScreen.controls = true;
+    document.title = "NOMOR";
+    All.timer.innerHTML = bytesToSize(All.blob.size);
+    getSeekableBlob(All.blob, (blob)=>{
+        All.blob = blob;
+        All.VideoScreen.src = URL.createObjectURL(blob)
+    });
 }
 
-const handlerForPlayAndPause = (e) => {
-    log(All.blob)
-    e.target.className = All.isPlayed ? "play": "pause";
+// const handlerForPlayAndPause = (e) => {
+//     if(All.isRecordingStarted){
+//         if(All.isPlayed)
+//         All.recorder.pauseRecording().then(()=>{
+//             All.isPlayed = false;
 
-    if (All.isPlayed) {
-        All.VideoScreen.src = All.VideoScreen.srcObject = null;
-        All.VideoScreen.controls = false
+//         })
+//         else{
+//             All.recorder.resumeRecording().then(()=>{
+//                 All.isPlayed = true;
+    
+//             }) 
+//         }
+//     }
 
-    } else {
-        All.VideoScreen.src = URL.createObjectURL(All.blob);
-        All.VideoScreen.controls = true;
+//     pausePlayBtn.className = All.isPlayed?"play":"pause";
 
-    }
-    timer.innerHTML = formatBytes(All.blob.size);
-    All.isPlayed = !All.isPlayed;
+// }
+
+const videoDownloader = ()=>{
+    if(All.blob!==null){
+        getSeekableBlob(All.blob, (blob)=>{
+            
+            invokeSaveAsDialog(blob)
+        });
+    };
 
 }
 
 // this fuction will run when we `click` on `startStopBtn` startStopBtn.disabled
 // = true
+
+
 const statStopHandler = (ent) => {
+    runThisFirst();
     // if `isRecordingStarted` is `false` then do it `true`, if `true` then do it
     // `false`
     All.isRecordingStarted = !All.isRecordingStarted;
@@ -140,5 +175,6 @@ const statStopHandler = (ent) => {
 
 // https://recordrtc.org/index.html
 startStopBtn.addEventListener("click", statStopHandler);
+videoDownload.addEventListener("click", videoDownloader);
 
-pausePlayBtn.addEventListener("click", (e) => handlerForPlayAndPause(e));
+// pausePlayBtn.addEventListener("click", (e) => handlerForPlayAndPause(e));

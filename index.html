@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>NOMOR</title>
+    <link rel="shortcut icon" type="image/svg+xml" href="./ico/record.svg"/>
     <script src="./js/RecordRTC.js"></script>
+    <script src="./js/EBML.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     
 </head>
 <body>
     <div class="app">
+        <div class="tabs">
+            
+        </div>
+        <div class="RealApp">
         <div class="heading">
             <div class="c">N<div class="w">o</div></div>
             <div class="c co">O</div>
@@ -20,14 +26,15 @@
         </div>
 
         <div class="elements">
-            <video id="VideoScreen" autoplay></video>
+            <video id="VideoScreen" autoplay controls></video>
             <div class="timer" id="timer">00:00</div>
         </div>
         <div class="controls">
             <div id="startStopBtn" class="record"></div>
-            <div id="pausePlayBtn" class="play"></div>
+            <!-- <div id="pausePlayBtn" class="play"></div> -->
+            <div id="videoDownload" class="download"></div>
         </div>
-        
+        </div>
     </div>
     
 </body>
