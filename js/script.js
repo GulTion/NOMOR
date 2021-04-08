@@ -68,13 +68,9 @@ const handlerForStartingRecording = async() => {
     }
 
     log('Recording is Stared!!');
-    All.VideoScreen.srcObject = All.stream = await navigator
-        .mediaDevices
-        .getDisplayMedia(screenConfig);
+    All.VideoScreen.srcObject = All.stream = await navigator.mediaDevices.getDisplayMedia(screenConfig);
     All.recorder = new RecordRTCPromisesHandler(All.stream, {type: 'video'});
-    All
-        .recorder
-        .startRecording();
+    All.recorder.startRecording();
     All.recorder.screen = All.stream;
 
     dateStarted = new Date().getTime();
@@ -93,29 +89,20 @@ const handlerForStartingRecording = async() => {
 const handlerForStopingRecording = async() => {
     log('Recording is Stoped!');
 
-    await All
-        .recorder
-        .stopRecording();
+    await All.recorder.stopRecording();
     log("Step1");
 
-    All.blob = await All
-        .recorder
-        .getBlob();
+    All.blob = await All.recorder.getBlob();
 
     log("Step2")
     All.VideoScreen.srcObject = null;
-    All
-        .recorder
-        .screen
-        .stop();
+    All.recorder.screen.stop();
     All.recorder = null;
 }
 
 const handlerForPlayAndPause = (e) => {
     log(All.blob)
-    e.target.className = All.isPlayed
-        ? "play"
-        : "pause";
+    e.target.className = All.isPlayed ? "play": "pause";
 
     if (All.isPlayed) {
         All.VideoScreen.src = All.VideoScreen.srcObject = null;
