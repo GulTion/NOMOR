@@ -5,10 +5,51 @@
 body{
     margin:0;
     padding: 0;
-    background-image: url(../image/sea.jpg);
-    background-position: 50% 50%;
-    
+    animation: bgChagner 20s  infinite alternate;
+    /* background-image: url(../image/bg1.jpg), url(../image/bg2.jpg), url(../image/bg3.jpg); */
+    /* background-size:cover; */
+    /* background-position: 0% 0%,10% 10%,20% 20%; */
+    background-position: 0;
+    background-size:1920px;
     height: 100vh;
+
+}
+
+
+
+/* @keyframes small{
+    0%{
+        transform: scale(0);
+
+    }
+    100%{
+        transform: scale(1);
+    }
+} */
+
+@keyframes bgChagner{
+    0%{
+        background-image: url(../image/bg1.jpg);
+        background-position: 0% 0%;
+        animation-delay: 5s;
+  
+    }
+    33%{
+        background-image: url(../image/bg2.jpg);
+        background-position: 100% 100%;
+        animation-delay: 1s;
+    }
+    66%{
+        background-image: url(../image/bg3.jpg);
+        background-position: 0% 0%;
+        animation-delay: 1s;
+    }
+
+  
+    100%{
+        background-image: url(../image/bg1.jpg);
+        background-position: 100% 100%;
+    }
 }
 #VideoScreen{
     /* box-shadow: 0 5px 10px rgba(0,0,0,0.3); */
@@ -35,8 +76,9 @@ body{
 }
 .elements{
     padding: 2em;
-    box-shadow:0 0px 10px 2px rgba(0,0,0,0.3);
-    backdrop-filter:blur(3px);
+    box-shadow:0 0px 10px 2px rgba(0, 0, 0, 0.4);
+    backdrop-filter:blur(5px);
+    background-color: rgba(248, 248, 248, 0.192);
     border-radius: 10px;
     width: 80%;
     max-width: 700px;
@@ -46,9 +88,10 @@ body{
     margin-top: 1em;
     width: 90%;
     box-shadow:0 0px 5px rgba(0, 0, 0, 0.342);
-    backdrop-filter:blur(3px);
+    backdrop-filter:blur(5px);
     border-radius: 10px;
     max-width: 700px;
+    background-color: rgba(248, 248, 248, 0.192);
 
 }
 .tabs{
