@@ -1,46 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOMOR</title>
-    <link rel="shortcut icon" type="image/svg+xml" href="./ico/record.svg"/>
-    <script src="./js/RecordRTC.js"></script>
-    <script src="./js/EBML.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
-    
-</head>
-<body>
-    <div class="app">
-        <div class="tabs">
-            
-        </div>
-        <div class="RealApp">
-        <div class="heading">
-            <div class="c">N<div class="w">o</div></div>
-            <div class="c co">O</div>
-            <div class="c">M<div class="w">oney</div></div>
-            <div class="c">O<div class="w">nly</div></div>
-            <div class="c">R<div class="w">ecording</div></div>
-        </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NOMOR</title>
+        <link rel="shortcut icon" type="image/svg+xml" href="./ico/record.svg"/>
+        <script src="./js/RecordRTC.js"></script>
+        <script src="./js/EBML.js"></script>
+        <link rel="stylesheet" href="./css/style.css">
+        <meta name="keywords" content="Online Recorder by 70993R5">
+        <meta name="description" content="Online screen,webcam, sound recorder">
+        <meta name="author" content="70993R5">
 
-        <div class="elements">
-            <video id="VideoScreen" autoplay controls></video>
-            <div class="timer" id="timer">00:00</div>
+    </head>
+
+    <body>
+        <!-- <div class="loading">LOADING</div> -->
+        <div class="app">
+
+            <!-- Tabs -->
+            <div class="tabs">
+                <div class="active tabsele"><img src="./ico/moniter.svg" alt=""></div>
+                <div class="tabsele"><img src="./ico/webcam.svg" alt=""></div>
+                <div class=" tabsele"><img src="./ico/mic.svg" alt=""></div>
+            </div>
+
+            <!-- Screen Recording Tab -->
+            <div class="RealApp tab" id="ScreenTab">
+
+                <div class="heading">
+                    <div class="c">N<div class="w">o</div>
+                    </div>
+                    <div class="c co">O</div>
+                    <div class="c">M<div class="w">oney</div>
+                    </div>
+                    <div class="c">O<div class="w">nly</div>
+                    </div>
+                    <div class="c">R<div class="w">ecording</div>
+                    </div>
+                </div>
+
+                <div class="elements">
+                    <video id="VideoScreen" autoplay controls></video>
+                    <div class="timer" id="timer">00:00</div>
+                </div>
+                <div class="controls">
+                    <div id="startStopBtn" class="record"></div>
+                    <!-- <div id="pausePlayBtn" class="play"></div> -->
+                    <div id="videoDownload" class="download"></div>
+                </div>
+            </div>
+
+            <!-- WebRecording tab -->
+            <div class="RealApp tab" id="CameraTab">
+                <div class="heading">
+                    <div class="c">N<div class="w">o</div>
+                    </div>
+                    <div class="c co">O</div>
+                    <div class="c">M<div class="w">oney</div>
+                    </div>
+                    <div class="c">O<div class="w">nly</div>
+                    </div>
+                    <div class="c">R<div class="w">ecording</div>
+                    </div>
+                </div>
+
+                <div class="elements">
+                    <!-- <video id="VideoScreen" autoplay controls></video> -->
+                    <div class="timer" id="timer">00:00</div>
+                </div>
+
+            </div>
+
+            <!-- Sound Recording tab -->
+            <div class="RealApp tab" id="SoundTab"></div>
         </div>
-        <div class="controls">
-            <div id="startStopBtn" class="record"></div>
-            <!-- <div id="pausePlayBtn" class="play"></div> -->
-            <div id="videoDownload" class="download"></div>
-        </div>
-        </div>
-    </div>
-    <!-- <div class="background">
+        <!-- <div class="background">
         <img src="./image/bg1.jpg" id="img1">
         <img src="./image/bg2.jpg" id="img2">
         <img src="./image/bg3.jpg" id="img3">
     </div> -->
-</body>
-<script src="./js/script.js"></script>
+    </body>
+    <script src="./js/script2.js"></script>
 </html>

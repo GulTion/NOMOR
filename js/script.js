@@ -1,13 +1,27 @@
 // let stream = await navigator.mediaDevices.getUserMedia({video: true, audio:
 // true});
 
-const {log, table} = console;
 
+
+const {log, table} = console;
+const $ = (ele)=> document.querySelector(ele);
 const VideoScreen = document.querySelector("#VideoScreen");
 const startStopBtn = document.querySelector("#startStopBtn");
 // const pausePlayBtn = document.querySelector("#pausePlayBtn");
 const timer = document.querySelector("#timer");
 const videoDownloadBtn = document.querySelector("#videoDownload");
+
+// const img2dataurl = (img) => {
+//     const cs = document.createElement('canvas');
+//     const ctx = cs.getContext('2d');
+//     cs.width = img.width
+//     cs.height = img.height;
+//     ctx.drawImage(img, 0,0,img.width, img.height);
+//     log(cs.toDataURL('image/jpg'))
+
+//     return cs.toDataURL('image/jpg');
+
+// }
 
 let All = {
     VideoScreen,
@@ -16,9 +30,38 @@ let All = {
     isRecordingStarted: false,
     blob: null,
     isPlayed: false,
-    timer:timer
-
+    timer:timer,
+    
 }
+
+
+
+const ScreenTab = document.querySelector("#ScreenTab")
+const CameraTab = document.querySelector("#CameraTab")
+const SoundTab = document.querySelector("#SoundTab")
+
+
+
+const allTab = document.querySelectorAll('.tab');
+allTab.forEach(e=>{e.style.display='none'});
+const allTabs = document.querySelectorAll('.tabsele');
+allTabs.forEach((e,i)=>{
+    e.onclick = function(){
+        allTab.forEach(e=>{e.style.display='none'});
+        allTab[i].style.display = 'flex';
+        allTabs.forEach(k=>k.className = 'tabsele unactive');
+        allTabs[i].className = 'tabsele active'
+    }
+})
+allTab[0].style.display = 'flex'
+
+
+
+
+setTimeout(()=>{
+    const loading = $(".loading");
+    loading.style.display = "none"
+},5000)
 
 const runThisFirst = () =>{
     if(All.blob==null&&All.recorder==null){
@@ -27,6 +70,8 @@ const runThisFirst = () =>{
         videoDownloadBtn.style.display = "block"
     }
 }
+
+// log(localStorage.getItem("bg1"))
 
 runThisFirst()
 
@@ -82,7 +127,7 @@ const handlerForStartingRecording = async() => {
 
     log('Recording is Stared!!');
     All.VideoScreen.srcObject = All.stream = await navigator.mediaDevices.getDisplayMedia(screenConfig);
-    All.recorder = new RecordRTCPromisesHandler(All.stream, {type: 'video'});
+    All.recorder = new RecordRTCPromisesHandler(All.stream, {type: 'video/mp4'});
     All.recorder.startRecording();
     All.recorder.screen = All.stream;
 

@@ -5,52 +5,65 @@
 body{
     margin:0;
     padding: 0;
-    animation: bgChagner 30s  infinite alternate;
+    /* animation: bgChagner 30s  infinite alternate; */
     /* background-image: url(../image/bg1.jpg), url(../image/bg2.jpg), url(../image/bg3.jpg); */
     /* background-size:cover; */
     /* background-position: 0% 0%,10% 10%,20% 20%; */
     background-position: 0;
     background-size:1920px;
+    /* background-repeat: no-repeat; */
     height: 100vh;
-
+    background: linear-gradient(125deg,
+    hsl(210,100%,50%),
+    hsl(240,100%,50%),
+    hsl(270,100%,50%),
+    hsl(300,100%,50%)
+    );
+    /* background-size: 1920px 1920px; */
+    /* animation: small 10s  infinite alternate; */
 }
 
 
 
-/* @keyframes small{
+@keyframes small{
     0%{
-        transform: scale(0);
+        background-position: 0px 0px;
+        /* i am using recoder to recoder my entier screen so You can see my all screen in this tab */
 
     }
     100%{
-        transform: scale(1);
+        background-position: 100% 100%;
+    
     }
-} */
+  
+}
 
 @keyframes bgChagner{
     0%{
         background-image: url(../image/bg1.jpg);
-        background-position: 0% 0%;
-        animation-delay: 5s;
-  
+        background-position: 0px 0px;
+      
+    
     }
-    33%{
+    /* 33%{
         background-image: url(../image/bg2.jpg);
-        background-position: 100% 100%;
-        animation-delay: 1s;
-    }
-    66%{
+        background-position:100% 100%;
+        animation-delay: 5s;
+    } */
+    /* 100%{
         background-image: url(../image/bg3.jpg);
-        background-position: 0% 0%;
-        animation-delay: 1s;
-    }
+        background-position: 100% 100%;
+     
+    } */
 
   
-    100%{
+   100%{
         background-image: url(../image/bg1.jpg);
         background-position: 100% 100%;
-    }
+        animation-delay: 5s;
+    } 
 }
+
 #VideoScreen{
     /* box-shadow: 0 5px 10px rgba(0,0,0,0.3); */
     background:rgba(0,0,0,0);
@@ -95,7 +108,7 @@ body{
 
 }
 .tabs{
-    width: 70px;
+    width: 80px;
     /* position: fixed; */
     height: 100%;
     margin: 0;
@@ -109,12 +122,26 @@ body{
 }
 
 .tabs div{
-    width: 64px;
-    height: 64px;
-    margin: 0.5em 0;
+    width: calc(64px + 0.5em);
+    height: calc(64px + 0.5em);
+    margin: 0.5em;
     cursor: pointer;
+    border-radius: 10px;
+    padding: 0.25em;
+    
+}
+.tabs div.active{
+    box-shadow:0 0px 5px rgba(0, 0, 0, 0.342);
+    backdrop-filter: blur(10px);
 
 }
+
+
+.tabs .unactive{
+  
+}
+
+
 .controls{
     height: 70px;
     display: flex;
@@ -202,3 +229,23 @@ body{
     text-shadow:2px 2px 5px rgba(238, 238, 238, 0.76);
 
 }
+
+.loading{
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(50px);
+    -moz-backdrop-filter: blur(50px);
+    position: fixed;
+    top:0px;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:5em;
+    font-weight: 600;
+    color: white;
+   
+
+}
+
