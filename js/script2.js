@@ -1,34 +1,34 @@
 // UNIVERSAL Variables
  
-const tabHandler = (tabBtnID, tabContainerID) =>{
-    const tabBtnList = document.querySelectorAll(tabBtnID);
-    const tabContainerList = document.querySelectorAll(tabContainerID);
+// const tabHandler = (tabBtnID, tabContainerID) =>{
+//     const tabBtnList = document.querySelectorAll(tabBtnID);
+//     const tabContainerList = document.querySelectorAll(tabContainerID);
 
-    // Make all tab Container `display:none`
-    tabContainerList.forEach(ele=>ele.style.display="none")
+//     // Make all tab Container `display:none`
+//     tabContainerList.forEach(ele=>ele.style.display="none")
 
-    // But By Default first tab must be Visible so `display:flex`
-    tabContainerList[0].style.display = `flex`;
+//     // But By Default first tab must be Visible so `display:flex`
+//     tabContainerList[0].style.display = `flex`;
 
-    tabBtnList.forEach(function(btn, index){
-        btn.addEventListener("click" ,function(){
-            // Make all tab class to unActive
-            tabBtnList.forEach(e=>e.className = "tabsele");
+//     tabBtnList.forEach(function(btn, index){
+//         btn.addEventListener("click" ,function(){
+//             // Make all tab class to unActive
+//             tabBtnList.forEach(e=>e.className = "tabsele");
     
-            // make only this className to `tabsele active`
-            this.className = `tabsele active`
+//             // make only this className to `tabsele active`
+//             this.className = `tabsele active`
 
-            // Make all tab Container `display:none`
-            tabContainerList.forEach(ele=>ele.style.display="none");
+//             // Make all tab Container `display:none`
+//             tabContainerList.forEach(ele=>ele.style.display="none");
 
-            // Visibel only the Currnet index of the Tab
-            tabContainerList[index].style.display = `flex`;
+//             // Visibel only the Currnet index of the Tab
+//             tabContainerList[index].style.display = `flex`;
 
     
-        })
-    })
-}
-tabHandler(".tabsele", ".tab");
+//         })
+//     })
+// }
+// tabHandler(".tabsele", ".tab");
 document.body.onload = async ()=>{
     const {log} = console
     const All = {
@@ -55,7 +55,12 @@ document.body.onload = async ()=>{
 
 
             return new Promise(async (res, rej)=>{
-                await this.askPermissionForScreen(config.stream)
+                
+                if(window.location.pathname=="/camera.html"){
+                    await this.askPermissionForCamera(config.stream)
+                }else{
+                    await this.askPermissionForScreen(config.stream)
+                }
                 this.recorder =new RecordRTCPromisesHandler(this.stream, config.recorder);
                 await this.recorder.startRecording();
                 this.loadStreamAtScreenVideoElement();
@@ -127,7 +132,11 @@ document.body.onload = async ()=>{
             // downlaod btn
             this.controls.downloadScreenVideoBtn.addEventListener("click",async ()=>{
                
-                invokeSaveAsDialog(await this.recorder.getBlob())
+                getSeekableBlob(await this.recorder.getBlob(), (seekableBlob)=>{
+            
+                    invokeSaveAsDialog(seekableBlob)
+
+                });
                
             })
 
