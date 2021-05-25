@@ -29,7 +29,21 @@
 //     })
 // }
 // tabHandler(".tabsele", ".tab");
+
+
+
+
+
 document.body.onload = async ()=>{
+
+    //Loading Remover
+    setTimeout(()=>{
+        let loading = document.querySelector(".loading");
+        loading.style.display="none"
+        
+    },4000)
+
+
     const {log} = console
     const All = {
         _:(ele)=>document.querySelector(ele),
