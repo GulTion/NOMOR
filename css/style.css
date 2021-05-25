@@ -5,7 +5,7 @@
 body{
     margin:0;
     padding: 0;
-    /* animation: bgChagner 30s  infinite alternate; */
+    animation: bgChagner 20s  infinite alternate;
     /* background-image: url(../image/bg1.jpg), url(../image/bg2.jpg), url(../image/bg3.jpg); */
     /* background-size:cover; */
     /* background-position: 0% 0%,10% 10%,20% 20%; */
@@ -13,12 +13,12 @@ body{
     background-size:1920px;
     /* background-repeat: no-repeat; */
     height: 100vh;
-    background: linear-gradient(125deg,
+    /* background: linear-gradient(125deg,
     hsl(210,100%,50%),
     hsl(240,100%,50%),
     hsl(270,100%,50%),
     hsl(300,100%,50%)
-    );
+    ); */
     /* background-size: 1920px 1920px; */
     /* animation: small 10s  infinite alternate; */
 }
