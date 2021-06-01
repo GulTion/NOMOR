@@ -6,21 +6,11 @@ body{
     margin:0;
     padding: 0;
     animation: bgChagner 20s  infinite alternate;
-    /* background-image: url(../image/bg1.jpg), url(../image/bg2.jpg), url(../image/bg3.jpg); */
-    /* background-size:cover; */
-    /* background-position: 0% 0%,10% 10%,20% 20%; */
+
     background-position: 0;
     background-size:1920px;
-    /* background-repeat: no-repeat; */
+
     height: 100vh;
-    /* background: linear-gradient(125deg,
-    hsl(210,100%,50%),
-    hsl(240,100%,50%),
-    hsl(270,100%,50%),
-    hsl(300,100%,50%)
-    ); */
-    /* background-size: 1920px 1920px; */
-    /* animation: small 10s  infinite alternate; */
 }
 
 
@@ -28,7 +18,7 @@ body{
 @keyframes small{
     0%{
         background-position: 0px 0px;
-        /* i am using recoder to recoder my entier screen so You can see my all screen in this tab */
+       
 
     }
     100%{
@@ -45,17 +35,6 @@ body{
       
     
     }
-    /* 33%{
-        background-image: url(../image/bg2.jpg);
-        background-position:100% 100%;
-        animation-delay: 5s;
-    } */
-    /* 100%{
-        background-image: url(../image/bg3.jpg);
-        background-position: 100% 100%;
-     
-    } */
-
   
    100%{
         background-image: url(../image/bg1.jpg);
@@ -109,13 +88,11 @@ body{
 }
 .tabs{
     width: 80px;
-    /* position: fixed; */
     height: 100%;
     margin: 0;
     border-radius: 0;
     display: flex;
     flex-flow: column nowrap;
-
     justify-content: center;
     align-items: center;
 
@@ -241,7 +218,5 @@ body{
     font-size:5em;
     font-weight: 600;
     color: white;
-   
-
 }
 
