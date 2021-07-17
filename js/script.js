@@ -61,7 +61,7 @@ allTab[0].style.display = 'flex'
 setTimeout(()=>{
     const loading = $(".loading");
     loading.style.display = "none"
-},5000)
+},3000)
 
 const runThisFirst = () =>{
     if(All.blob==null&&All.recorder==null){

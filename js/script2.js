@@ -19,7 +19,7 @@ document.body.onload = async ()=>{
         loading.style.display="none"
         
         // यहा पर time milli सेकोण्ड्स 
-    },4000)
+    },000)
 
     // All एक main object है । सारे काम इसी के जरिये किए जाएंगे
     const All = {
@@ -220,14 +220,14 @@ document.body.onload = async ()=>{
 
 //[ START ][ Code For Service Workers FIle attachement ]
 
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('../sw.js').then(function(reg) {
-        return;
-  }).catch(function(error) {
-      // registration failed
-      console.log('Registration failed with ' + error);
-    });
-  }
+// if ('serviceWorker' in navigator) {
+//     navigator.serviceWorker.register('../sw.js').then(function(reg) {
+//         return;
+//   }).catch(function(error) {
+//       // registration failed
+//       console.log('Registration failed with ' + error);
+//     });
+//   }
 
 //   [ END ]
 

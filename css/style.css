@@ -220,3 +220,74 @@ body{
     color: white;
 }
 
+.row{
+    display: flex;
+    flex-flow: row wrap;
+
+}
+.col{
+    display: flex;
+    flex-flow: column wrap;
+    padding: 1em;
+    /* position: sticky; */
+    /* top: 0em; */
+    /* width: 3%; */
+    /* border: 1px solid white; */
+}
+.card{
+    width: 300px;
+    backdrop-filter: blur(10px);
+    -moz-backdrop-filter: blur(10px);
+    color: white;
+    border: 1px dashed white;
+    margin: 1em;
+    padding: 1em;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.342);
+    border-radius: 10px;
+    margin-bottom: 0;
+    /* font-size: 1.1em; */
+    /* position: sticky; */
+    /* top: 0px; */
+}
+.about{
+    width: 100% !important;
+    height: 100% !important;
+    /* background: rgb(143, 141, 141); */
+    display: flex;
+    flex-flow:row wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    padding: 1em;
+    overflow-y: scroll;
+    /* align-items:f; */
+    
+}
+.h1{
+    font-size: 3em;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+.h2{
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.h3{
+    font-size: 1.5em;
+    text-transform: capitalize;
+    font-weight: 800;
+}
+.hr{
+    width: calc(100% - 2em);
+    border: 1px solid white;
+    margin: 0 1em;
+    height: 0;
+    background: white;
+    margin-top: 1em;
+}
+.card{
+    text-align: justify;
+}
+.card a{
+   color: white;
+}

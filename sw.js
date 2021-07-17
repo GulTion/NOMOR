@@ -1,7 +1,9 @@
 // this file Contains the Code for Offline Caching
+
 self.addEventListener('install', function(event) {
+ 
     event.waitUntil(
-      caches.open('v1').then(function(cache){
+      caches.open("v1").then(function(cache){
         return cache.addAll([
           'camera.html',
           'index.html',
@@ -17,10 +19,15 @@ self.addEventListener('install', function(event) {
           'image/bg1.jpg',
           'js/EBML.js',
           'js/RecordRTC.js',
-          'js/script2.js'
+          'js/script2.js',
+          "about.html"
         ]);
       })
     );
+  });
+
+  self.addEventListener('activate', function(event) {
+  
   });
 
 
