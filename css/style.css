@@ -48,6 +48,7 @@ body{
     background:rgba(0,0,0,0);
     width: 100%;
     max-height: 50vh;
+    border-radius: 5px;
    
 }
 .app{
@@ -290,4 +291,10 @@ body{
 }
 .card a{
    color: white;
+}
+video::-webkit-media-controls{
+    background: rgba(0, 0, 0, 0.142) !important;
+}
+video::-webkit-media-controls-panel{
+    background: transparent !important;
 }
