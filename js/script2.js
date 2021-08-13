@@ -19,7 +19,7 @@ document.body.onload = async ()=>{
         loading.style.display="none"
         
         // यहा पर time milli सेकोण्ड्स 
-    },3000)
+    },000)
 
     // All एक main object है । सारे काम इसी के जरिये किए जाएंगे
     const All = {
@@ -62,6 +62,7 @@ document.body.onload = async ()=>{
             return new Promise((res,rej)=>{
                 // यहा पर बस हमने stream को विडियो element के scrObject मे डाल दिया है
                      video.srcObject = this.stream;
+                     video.muted = false
                     res(this)
             })
         },
@@ -127,11 +128,14 @@ document.body.onload = async ()=>{
         // इस function का काम, जो भी स्ट्रीम flow हो रही होगी उसको विडियो एलिमंट मे fill कर दो
         loadStreamAtScreenVideoElement:function(){
             this.controls.screenVideoElement.srcObject = this.stream;
+            this.controls.screenVideoElement.muted = true
+
         },
 
         // जब stream को बंद करने पर विडियो एलिमंट के src को भी null करने का काम इस फंकशन का है
         unLoadStreamAtScreenVideoElement:async function(){
             this.controls.screenVideoElement.srcObject = null;
+            this.controls.screenVideoElement.muted = false
         },
 
 
@@ -169,7 +173,20 @@ document.body.onload = async ()=>{
 
             // ये permission के टाइम मागे जाने वाली information 
             stream:{
-                video:true
+                video:{
+                    // chromeMediaSource: 'screen',
+                    minWidth: 1280,
+                    minHeight: 720,
+        
+                    maxWidth: 1920,
+                    maxHeight: 1080,
+        
+                    // minFrameRate: 3,
+                    // maxFrameRate: 32,
+        
+                    minAspectRatio: 1.77
+                },
+                audio:true
             }
         },
 
@@ -217,17 +234,4 @@ document.body.onload = async ()=>{
 }
 
 
-
-//[ START ][ Code For Service Workers FIle attachement ]
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('../sw.js').then(function(reg) {
-        return;
-  }).catch(function(error) {
-      // registration failed
-      console.log('Registration failed with ' + error);
-    });
-  }
-
-//   [ END ]
 

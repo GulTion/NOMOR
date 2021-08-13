@@ -15,18 +15,6 @@ body{
 
 
 
-@keyframes small{
-    0%{
-        background-position: 0px 0px;
-       
-
-    }
-    100%{
-        background-position: 100% 100%;
-    
-    }
-  
-}
 
 @keyframes bgChagner{
     0%{
@@ -39,7 +27,7 @@ body{
    100%{
         background-image: url(../image/bg1.jpg);
         background-position: 100% 100%;
-        animation-delay: 5s;
+        
     } 
 }
 
