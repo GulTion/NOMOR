@@ -1,8 +1,3 @@
-
-
-
-
-
 // log को derefference किया , जिससे की हर बार console पर प्रिंट करने के लिए `console.log` न लिखना पड़े
 const {log} = console;
 
